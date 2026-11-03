@@ -37,7 +37,7 @@ LOGS.md.
 - **Paginación y búsqueda**: `GET /authors?page=&limit=&search=` y
   `GET /books?page=&limit=&search=`, por defecto `page=1` y `limit=5` (máximo 100). `search` es
   opcional y busca parcialmente, sin distinguir mayúsculas: autores por nombre/email y libros por
-  título/ISBN/descripción. Los metadatos de la respuesta se calculan sobre los resultados filtrados.
+  título/ISBN/descripción/editorial. Los metadatos de la respuesta se calculan sobre los resultados filtrados.
 - **Autores borrados**: un autor borrado (borrado lógico) sigue apareciendo dentro de sus libros.
 - **Chat** (extra):
   - Conexión: `io(url, { auth: { token } })` con el access token. Si falta, es falso o ha caducado,
@@ -249,3 +249,9 @@ bloque B del backend. Se mantiene simple: lo importante es poder explicar el flu
   build` correcto. En el navegador con dos usuarios, 13 comprobaciones correctas: aparece y
   desaparece al entrar y salir del chat, cerrar una de dos pestañas no lo desconecta, el contador
   coincide con los puntos verdes, los conectados van primero y el clic abre el directo.
+
+### 2026-11-03 · Campo editorial
+
+- Campo opcional de editorial en el formulario, carga al editar y columna en la tabla.
+- El buscador indica que también admite editorial; el filtrado lo hace la API.
+- Verificación: build y lint correctos, 63 tests existentes superados y prueba en navegador de creación, edición y búsqueda por editorial.

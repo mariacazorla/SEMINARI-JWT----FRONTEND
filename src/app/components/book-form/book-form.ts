@@ -39,6 +39,7 @@ export class BookForm implements OnInit {
     title: ['', [Validators.required, Validators.pattern(/\S/)]],
     isbn: ['', [Validators.required, Validators.pattern(/\S/)]],
     authors: [[] as string[], Validators.required],
+    publisher: [''],
     description:[``],
     publishedYear: this.fb.control<number | null>(null, [
       Validators.min(1450),
@@ -103,6 +104,7 @@ export class BookForm implements OnInit {
       isbn: book.isbn,
       // La API manda los autores enteros (populate), pero el select trabaja con sus ids
       authors: book.authors.map((author) => author._id),
+      publisher: book.publisher ?? '',
       description:book.description ?? ``,
       publishedYear: book.publishedYear ?? null,
       pages: book.pages ?? null,
